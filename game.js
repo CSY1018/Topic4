@@ -52,22 +52,6 @@ function setBody4() {
 
 
 
-function keydown(event) {
-	var player = document.getElementById('player');
-
-	if (event.keyCode == 37) {		
-		player.className = 'character standLeft';
-	}
-	if (event.keyCode == 39) {
-		player.className = 'character standRight';
-	}
-	if (event.keyCode == 38) {
-		player.className = 'character standUp';
-	}
-	if (event.keyCode == 40) {
-		player.className = 'character standDown';
-	}	
-}
 
 
 
@@ -103,8 +87,6 @@ function myLoadFunction() {
 
   var element = document.getElementById('body4');
   element.addEventListener('click', setBody4);
-
-  document.addEventListener('keydown', keydown);
 }
 
 document.addEventListener('DOMContentLoaded', 
