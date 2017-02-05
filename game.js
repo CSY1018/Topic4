@@ -1,3 +1,10 @@
+var player;
+var upPressed = false;
+var downPressed = false;
+var leftPressed = false;
+var rightPressed = false;
+
+
 function setHead0() {
   var element = document.getElementsByClassName('head')[0];
   element.style.backgroundImage = 'url(images/head0.png)';
@@ -52,27 +59,76 @@ function setBody4() {
 
 
 
-function keydown(event) {
-	var player = document.getElementById('player');
 
+function move() {
+	var positionLeft = player.offsetLeft;
+	var positionTop = player.offsetTop;
+	if (downPressed) {
+		player.style.top = positionTop+1 + 'px';
+		player.className = 'character walkDown';
+	}
+	if (upPressed) {
+		player.style.top = positionTop-1 + 'px';
+		player.className = 'character walkUp';
+	}
+	if (leftPressed) {
+		player.style.left = positionLeft-1 + 'px';
+		player.className = 'character walkLeft';
+	}
+	if (rightPressed) {
+		player.style.left = positionLeft+1 + 'px';
+		player.className = 'character walkRight';
+	}
+
+}
+
+
+function keydown(event) {
 	if (event.keyCode == 37) {		
-		player.className = 'character standLeft';
+		leftPressed = true;
 	}
 	if (event.keyCode == 39) {
-		player.className = 'character standRight';
+		rightPressed = true;
 	}
 	if (event.keyCode == 38) {
-		player.className = 'character standUp';
+		upPressed = true;
 	}
 	if (event.keyCode == 40) {
-		player.className = 'character standDown';
+		downPressed = true;
+	}	
+}
+
+function keyup(event) {
+	if (event.keyCode == 37) {		
+		leftPressed = false;
+		if (!leftPressed && !rightPressed && !upPressed && !downPressed) {
+			player.className = 'character standLeft';
+		}
+	}
+	if (event.keyCode == 39) {
+		rightPressed = false;
+		if (!leftPressed && !rightPressed && !upPressed && !downPressed) {
+			player.className = 'character standRight';
+		}
+	}
+	if (event.keyCode == 38) {
+		upPressed = false;
+		if (!leftPressed && !rightPressed && !upPressed && !downPressed) {
+			player.className = 'character standUp';
+		}
+	}
+	if (event.keyCode == 40) {
+		downPressed = false;
+		if (!leftPressed && !rightPressed && !upPressed && !downPressed) {
+			player.className = 'character standDown';
+		}
 	}	
 }
 
 
-
 function myLoadFunction() {
-
+  player = document.getElementById('player');
+  
   var element = document.getElementById('head0');
   element.addEventListener('click', setHead0);
 
@@ -104,7 +160,9 @@ function myLoadFunction() {
   var element = document.getElementById('body4');
   element.addEventListener('click', setBody4);
 
+  timeout = setInterval(move, 10);
   document.addEventListener('keydown', keydown);
+  document.addEventListener('keyup', keyup);
 }
 
 document.addEventListener('DOMContentLoaded', 
