@@ -5,58 +5,16 @@ var leftPressed = false;
 var rightPressed = false;
 var interval = false;
 
-function setHead0() {
+function clickHead() {
   var element = document.getElementsByClassName('head')[0];
-  element.style.backgroundImage = 'url(images/head0.png)';
-}
-
-function setHead1() {
-  var element = document.getElementsByClassName('head')[0];
-  element.style.backgroundImage = 'url(images/head1.png)';
-}
-
-function setHead2() {
-  var element = document.getElementsByClassName('head')[0];
-  element.style.backgroundImage = 'url(images/head2.png)';
-}
-
-function setHead3() {
-  var element = document.getElementsByClassName('head')[0];
-  element.style.backgroundImage = 'url(images/head3.png)';
-}
-
-function setHead4() {
-  var element = document.getElementsByClassName('head')[0];
-  element.style.backgroundImage = 'url(images/head4.png)';
+  element.style.backgroundImage = 'url(images/' + this.id + '.png)';
 }
 
 
-
-function setBody0() {
+function clickBody() {
   var element = document.getElementsByClassName('body')[0];
-  element.style.backgroundImage = 'url(images/body0.png)';
+  element.style.backgroundImage = 'url(images/' + this.id + '.png)';
 }
-
-function setBody1() {
-  var element = document.getElementsByClassName('body')[0];
-  element.style.backgroundImage = 'url(images/body1.png)';
-}
-
-function setBody2() {
-  var element = document.getElementsByClassName('body')[0];
-  element.style.backgroundImage = 'url(images/body2.png)';
-}
-
-function setBody3() {
-  var element = document.getElementsByClassName('body')[0];
-  element.style.backgroundImage = 'url(images/body3.png)';
-}
-
-function setBody4() {
-  var element = document.getElementsByClassName('body')[0];
-  element.style.backgroundImage = 'url(images/body4.png)';
-}
-
 
 
 
@@ -157,35 +115,35 @@ function myLoadFunction() {
   player = document.getElementById('player');
 
   var element = document.getElementById('head0');
-  element.addEventListener('click', setHead0);
+  element.addEventListener('click', clickHead);
 
   var element = document.getElementById('head1');
-  element.addEventListener('click', setHead1);
+  element.addEventListener('click', clickHead);
         
   var element = document.getElementById('head2');
-  element.addEventListener('click', setHead2);
+  element.addEventListener('click', clickHead);
 
   var element = document.getElementById('head3');
-  element.addEventListener('click', setHead3);
+  element.addEventListener('click', clickHead);
 
   var element = document.getElementById('head4');
-  element.addEventListener('click', setHead4);
+  element.addEventListener('click', clickHead);
 
 
   var element = document.getElementById('body0');
-  element.addEventListener('click', setBody0);
+  element.addEventListener('click', clickBody);
 
   var element = document.getElementById('body1');
-  element.addEventListener('click', setBody1);
+  element.addEventListener('click', clickBody);
         
   var element = document.getElementById('body2');
-  element.addEventListener('click', setBody2);
+  element.addEventListener('click', clickBody);
 
   var element = document.getElementById('body3');
-  element.addEventListener('click', setBody3);
+  element.addEventListener('click', clickBody);
 
   var element = document.getElementById('body4');
-  element.addEventListener('click', setBody4);
+  element.addEventListener('click', clickBody);
 
   timeout = setInterval(move, 10);
   document.addEventListener('keydown', keydown);
