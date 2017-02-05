@@ -112,47 +112,22 @@ function sideOpen() {
 }
 
 function myLoadFunction() {
-  player = document.getElementById('player');
+	player = document.getElementById('player');
 
-  var element = document.getElementById('head0');
-  element.addEventListener('click', clickHead);
+    var elements = document.getElementsByTagName('li');
 
-  var element = document.getElementById('head1');
-  element.addEventListener('click', clickHead);
-        
-  var element = document.getElementById('head2');
-  element.addEventListener('click', clickHead);
+    for (var i = 0; i < 10; i++) {
+            elements[i].addEventListener('click', clickHead);
+    }
+    
+	timeout = setInterval(move, 10);
+	document.addEventListener('keydown', keydown);
+	document.addEventListener('keyup', keyup);
 
-  var element = document.getElementById('head3');
-  element.addEventListener('click', clickHead);
+	var close = document.getElementById('closeside');
+	close.addEventListener('click', sideClose);
 
-  var element = document.getElementById('head4');
-  element.addEventListener('click', clickHead);
-
-
-  var element = document.getElementById('body0');
-  element.addEventListener('click', clickBody);
-
-  var element = document.getElementById('body1');
-  element.addEventListener('click', clickBody);
-        
-  var element = document.getElementById('body2');
-  element.addEventListener('click', clickBody);
-
-  var element = document.getElementById('body3');
-  element.addEventListener('click', clickBody);
-
-  var element = document.getElementById('body4');
-  element.addEventListener('click', clickBody);
-
-  timeout = setInterval(move, 10);
-  document.addEventListener('keydown', keydown);
-  document.addEventListener('keyup', keyup);
-
-  var close = document.getElementById('closeside');
-  close.addEventListener('click', sideClose);
-
-  player.addEventListener('click', sideOpen);
+	player.addEventListener('click', sideOpen);
 }
 
 document.addEventListener('DOMContentLoaded', 
