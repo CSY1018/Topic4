@@ -3,7 +3,7 @@ var upPressed = false;
 var downPressed = false;
 var leftPressed = false;
 var rightPressed = false;
-
+var interval = false;
 
 function setHead0() {
   var element = document.getElementsByClassName('head')[0];
@@ -125,10 +125,37 @@ function keyup(event) {
 	}	
 }
 
+function sideBarHide() {
+	var sidebar = document.getElementsByTagName('aside')[0];
+	var positionLeft = parseInt(sidebar.style.marginLeft);
+	sidebar.style.marginLeft = (positionLeft + 1) + 'px';
+	if (positionLeft == 0) clearInterval(interval);
+}
+
+function sideClose() {
+	var sidebar = document.getElementsByTagName('aside')[0];
+	sidebar.style.marginLeft = '-240px';
+	interval = setInterval(sideBarHide, 1);
+}
+
+
+function sideBarShow() {
+	var sidebar = document.getElementsByTagName('aside')[0];
+	var positionLeft = parseInt(sidebar.style.marginLeft);
+	sidebar.style.marginLeft = (positionLeft - 1) + 'px';
+	if (positionLeft == -240) clearInterval(interval);
+}
+
+
+function sideOpen() {
+	var sidebar = document.getElementsByTagName('aside')[0];
+	sidebar.style.marginLeft = '0px';
+	interval = setInterval(sideBarShow, 1);
+}
 
 function myLoadFunction() {
   player = document.getElementById('player');
-  
+
   var element = document.getElementById('head0');
   element.addEventListener('click', setHead0);
 
@@ -163,6 +190,11 @@ function myLoadFunction() {
   timeout = setInterval(move, 10);
   document.addEventListener('keydown', keydown);
   document.addEventListener('keyup', keyup);
+
+  var close = document.getElementById('closeside');
+  close.addEventListener('click', sideClose);
+
+  player.addEventListener('click', sideOpen);
 }
 
 document.addEventListener('DOMContentLoaded', 
