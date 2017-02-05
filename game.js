@@ -114,12 +114,17 @@ function sideOpen() {
 function myLoadFunction() {
 	player = document.getElementById('player');
 
-    var elements = document.getElementsByTagName('li');
+	var heads = document.getElementsByClassName('heads')[0].getElementsByTagName('li');
+	for (var i = 0; i < heads.length; i++) {
+		heads[i].addEventListener('click', clickHead);
+	}
+	
+	var bodies = document.getElementsByClassName('bodies')[0].getElementsByTagName('li');
+	
+	for (var i = 0; i < heads.length; i++) {
+		bodies[i].addEventListener('click', clickBody);
+	}
 
-    for (var i = 0; i < 10; i++) {
-            elements[i].addEventListener('click', clickHead);
-    }
-    
 	timeout = setInterval(move, 10);
 	document.addEventListener('keydown', keydown);
 	document.addEventListener('keyup', keyup);
